@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: django_apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./your_django_project:/app
+    depends_on:
+      - mongo
+    environment:
+      - DEBUG=True  # Set your Django environment variables here
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+

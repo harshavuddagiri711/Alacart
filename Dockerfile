@@ -1,5 +1,5 @@
 # Use an official Python image as the base
-FROM python:3.8
+FROM python:3.11
 
 # Set environment variables
 ENV PYTHONUNBUFFERED 1
@@ -17,7 +17,7 @@ WORKDIR /app
 COPY . /app/
 
 # Install Python dependencies using pip
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Configure Apache for Django with mod_wsgi
 COPY apache/django.conf /etc/apache2/sites-available/django.conf
